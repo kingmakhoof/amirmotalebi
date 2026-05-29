@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seyed Amir Motalebi – Interpreter & Community Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0b1120;
+  --navy2: #151f35;
+  --blue: #2563eb;
+  --blue-light: #3b82f6;
+  --amber: #f59e0b;
+  --amber-light: #fbbf24;
+  --white: #ffffff;
+  --off: #f8fafc;
+  --border: #e2e8f0;
+  --text: #334155;
+  --muted: #64748b;
+  --radius: 16px;
+  --ease: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);background:var(--off);-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  background:rgba(11,17,32,0.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  height:64px;padding:0 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgb(255, 255, 255);
+}
+.nav-logo{color:#fff;font-size:18px;font-weight:800;letter-spacing:-0.5px;}
+.nav-logo span{color:var(--amber);}
+.nav-links{display:flex;gap:4px;list-style:none;}
+.nav-links a{
+  color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;font-weight:600;
+  padding:7px 14px;border-radius:8px;transition:var(--ease);
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;transition:var(--ease);}
+.mobile-menu{
+  display:none;position:fixed;top:64px;left:0;right:0;z-index:199;
+  background:rgba(11,17,32,0.97);padding:12px 20px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu.open{display:block;}
+.mobile-menu a{
+  display:block;color:rgba(255,255,255,0.8);text-decoration:none;
+  font-size:15px;font-weight:600;padding:13px 8px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.mobile-menu a:hover{color:var(--amber);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;padding:140px 20px 80px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:
+    radial-gradient(ellipse 80% 50% at 60% 20%, rgba(37,99,235,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(245,158,11,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 90% 70%, rgba(99,102,241,0.08) 0%, transparent 50%),
+    var(--navy);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(to top,var(--off),transparent);pointer-events:none;
+}
+.hero-content{position:relative;z-index:2;max-width:820px;}
+
+.avatar-ring{
+  width:148px;height:148px;margin:0 auto 28px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--amber));
+  padding:4px;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.1),0 20px 60px rgba(37,99,235,0.4);
+  transition:var(--ease);cursor:default;
+}
+.avatar-ring:hover{transform:scale(1.06);box-shadow:0 0 0 1px rgba(255,255,255,0.15),0 28px 72px rgba(37,99,235,0.55);}
+.avatar-inner{
+  width:100%;height:100%;border-radius:50%;
+  background:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:42px;font-weight:800;color:#fff;
+  border:4px solid var(--navy);
+  overflow:hidden;
+}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+
+.hero h1{font-size:48px;color:#fff;font-weight:800;letter-spacing:-1.5px;line-height:1.15;margin-bottom:14px;}
+.hero h1 span{
+  background:linear-gradient(135deg,var(--blue-light),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.65);font-weight:500;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;}
+
+.pill-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:36px;}
+.pill{
+  padding:7px 18px;border-radius:30px;font-size:12px;font-weight:700;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.85);transition:var(--ease);backdrop-filter:blur(4px);
+}
+.pill.amber{background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.3);color:#fde68a;}
+.pill:hover{background:rgba(255,255,255,0.14);transform:translateY(-2px);}
+
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
+.cta-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:12px;font-size:13px;font-weight:700;
+  text-decoration:none;transition:var(--ease);
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.85);
+}
+.cta-btn:hover{background:#fff;color:var(--navy);transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,0.3);}
+.cta-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;}
+.cta-btn.primary:hover{background:var(--blue-light);color:#fff;box-shadow:0 12px 28px rgba(37,99,235,0.4);}
+
+/* ── SECTIONS ── */
+section{padding:96px 20px;}
+.container{max-width:1060px;margin:0 auto;}
+.sec-head{text-align:center;margin-bottom:56px;}
+.sec-eyebrow{font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.sec-title{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-0.8px;margin-bottom:14px;}
+.sec-line{width:36px;height:4px;background:linear-gradient(90deg,var(--blue),var(--amber));border-radius:2px;margin:0 auto;}
+
+/* ── ABOUT ── */
+.about-section{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1.3fr 0.7fr;gap:56px;align-items:start;}
+.about-text p{font-size:15.5px;line-height:1.8;color:var(--text);margin-bottom:18px;}
+.quote-block{
+  margin-top:28px;padding:22px 24px;
+  background:linear-gradient(135deg,#eff6ff,#f0fdf4);
+  border-left:4px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;
+  font-style:italic;font-size:14px;color:#1e40af;line-height:1.7;
+}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.stat-card{
+  background:var(--off);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px 16px;text-align:center;
+  transition:var(--ease);
+}
+.stat-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.06);border-color:#cbd5e1;}
+.stat-n{font-size:34px;font-weight:800;color:var(--blue);letter-spacing:-1px;}
+.stat-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-top:6px;}
+
+/* ── EXPERTISE ── */
+.expertise-section{background:var(--navy);}
+.expertise-section .sec-eyebrow{color:var(--amber);}
+.expertise-section .sec-title{color:#fff;}
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.exp-card{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--radius);padding:28px 24px;
+  transition:var(--ease);
+}
+.exp-card:hover{
+  background:rgba(255,255,255,0.07);transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);border-color:rgba(255,255,255,0.15);
+}
+.exp-card-icon{font-size:34px;margin-bottom:16px;}
+.exp-card-title{font-size:15px;font-weight:700;color:var(--amber);margin-bottom:10px;}
+.exp-card-desc{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.65;}
+.exp-badge{
+  display:inline-block;margin-top:16px;
+  background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);
+  color:#fde68a;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;
+}
+
+/* ── TIMELINE ── */
+.timeline-section{background:var(--off);}
+.tl-wrap{position:relative;max-width:880px;margin:0 auto;}
+.tl-wrap::before{
+  content:'';position:absolute;left:28px;top:0;bottom:0;
+  width:2px;background:linear-gradient(180deg,var(--blue),var(--amber));
+  border-radius:2px;
+}
+.tl-item{display:flex;gap:36px;margin-bottom:44px;position:relative;}
+.tl-dot{
+  width:56px;height:56px;border-radius:50%;flex-shrink:0;z-index:2;
+  background:var(--white);border:2.5px solid var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;transition:var(--ease);
+  box-shadow:0 4px 16px rgba(37,99,235,0.15);
+}
+.tl-item:hover .tl-dot{background:var(--blue);transform:scale(1.1);}
+.tl-dot.amber-dot{border-color:var(--amber);}
+.tl-item:hover .tl-dot.amber-dot{background:var(--amber);}
+.tl-body{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);padding:28px 32px;flex:1;
+  transition:var(--ease);
+}
+.tl-body:hover{box-shadow:0 20px 40px rgba(0,0,0,0.07);border-color:#cbd5e1;transform:translateX(4px);}
+.tl-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:8px;}
+.tl-role{font-size:17px;font-weight:800;color:var(--navy);letter-spacing:-0.3px;}
+.tl-org{font-size:13.5px;color:var(--blue);font-weight:700;margin-top:3px;}
+.tl-date{
+  background:linear-gradient(135deg,var(--blue),var(--blue-light));
+  color:#fff;padding:5px 16px;border-radius:30px;
+  font-size:11.5px;font-weight:700;white-space:nowrap;
+}
+.tl-list{margin-top:16px;list-style:none;}
+.tl-list li{font-size:13.5px;color:var(--text);padding:5px 0;display:flex;gap:10px;align-items:flex-start;line-height:1.6;}
+.tl-list li::before{content:"▸";color:var(--blue);font-size:11px;margin-top:4px;flex-shrink:0;}
+
+/* ── SKILLS ── */
+.skills-section{background:var(--white);}
+.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.sk-card{
+  background:var(--off);border:1px solid var(--border);
+  border-radius:var(--radius);padding:26px;transition:var(--ease);
+}
+.sk-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 16px 32px rgba(37,99,235,0.08);}
+.sk-icon{font-size:28px;margin-bottom:14px;}
+.sk-title{font-size:13px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;}
+.sk-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.sk-tag{
+  background:var(--white);border:1px solid var(--border);
+  color:var(--text);padding:4px 12px;border-radius:8px;
+  font-size:11.5px;font-weight:600;transition:var(--ease);
+}
+.sk-card:hover .sk-tag{background:#eff6ff;border-color:transparent;color:var(--blue);}
+
+/* ── QUALIFICATIONS ── */
+.qual-section{
+  background:linear-gradient(135deg,#0b1120 0%,#151f35 50%,#0b1120 100%);
+  position:relative;overflow:hidden;
+}
+.qual-section::before{
+  content:'';position:absolute;top:-50%;right:-20%;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.qual-section .sec-eyebrow{color:var(--amber);}
+.qual-section .sec-title{color:#fff;}
+.qual-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;position:relative;z-index:1;}
+.q-card{
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:28px;transition:var(--ease);
+}
+.q-card:hover{background:rgba(255,255,255,0.06);transform:translateY(-5px);border-color:rgba(255,255,255,0.16);}
+.q-card.featured{border-color:rgba(245,158,11,0.4);background:rgba(245,158,11,0.04);}
+.q-card.featured:hover{border-color:rgba(245,158,11,0.65);}
+.q-badge{
+  display:inline-block;margin-bottom:16px;
+  padding:4px 12px;border-radius:6px;font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:0.5px;
+}
+.ofqual{background:#10b981;color:#fff;}
+.sport{background:#ef4444;color:#fff;}
+.christian{background:#8b5cf6;color:#fff;}
+.degree{background:#06b6d4;color:#fff;}
+.q-name{font-size:15.5px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.4;}
+.q-org{font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px;}
+.q-sub{font-size:12px;color:rgba(255,255,255,0.4);font-style:italic;margin-bottom:16px;}
+.q-year{font-size:13px;color:var(--amber);font-weight:700;}
+
+/* ── REFERENCES ── */
+.ref-section{background:var(--off);}
+.ref-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.ref-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);padding:32px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  transition:var(--ease);position:relative;overflow:hidden;
+}
+.ref-card::before{
+  content:'"';position:absolute;top:8px;right:20px;
+  font-size:80px;color:#f1f5f9;font-family:Georgia,serif;
+  line-height:1;pointer-events:none;font-weight:900;
+}
+.ref-card:hover{border-color:var(--blue);transform:translateY(-5px);box-shadow:0 20px 40px rgba(37,99,235,0.1);}
+.ref-stars{color:var(--amber);font-size:14px;margin-bottom:14px;}
+.ref-quote{
+  font-size:13.5px;color:var(--text);font-style:italic;
+  margin-bottom:24px;line-height:1.75;position:relative;z-index:1;
+}
+.ref-footer{display:flex;align-items:center;gap:14px;}
+.ref-av{
+  width:46px;height:46px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),#1d4ed8);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:14px;font-weight:800;
+}
+.ref-name{font-size:13.5px;font-weight:800;color:var(--navy);}
+.ref-role{font-size:11px;color:var(--muted);margin-top:1px;}
+.ref-org{font-size:11px;color:var(--blue);font-weight:700;margin-top:1px;}
+/* Featured reference highlight */
+.ref-card.featured-ref{
+  border-color:rgba(245,158,11,0.35);
+  background:linear-gradient(135deg,#fffbeb,#fff);
+}
+.ref-card.featured-ref:hover{border-color:var(--amber);box-shadow:0 20px 40px rgba(245,158,11,0.12);}
+.ref-card.featured-ref .ref-av{background:linear-gradient(135deg,var(--amber),#d97706);}
+
+/* ── LANGUAGES ── */
+.lang-section{background:var(--white);}
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:640px;margin:0 auto;}
+.lang-card{
+  background:var(--off);border:1px solid var(--border);
+  border-radius:var(--radius);padding:32px;text-align:center;
+  transition:var(--ease);
+}
+.lang-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.06);}
+.lang-flag{font-size:42px;margin-bottom:12px;}
+.lang-name{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.lang-lev{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:16px;}
+.lang-bar{background:#e2e8f0;border-radius:10px;height:8px;overflow:hidden;}
+.lang-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--blue),var(--amber));}
+
+/* ── CONTACT ── */
+.contact-section{
+  background:var(--navy);
+  position:relative;overflow:hidden;
+}
+.contact-section::before{
+  content:'';position:absolute;bottom:-100px;left:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,158,11,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.contact-section .sec-eyebrow{color:var(--amber);}
+.contact-section .sec-title{color:#fff;}
+.contact-sub{color:rgba(255,255,255,0.6);font-size:15px;max-width:500px;margin:0 auto 48px;}
+.cc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+.cc-card{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:28px;text-align:center;
+  min-width:200px;text-decoration:none;color:#fff;
+  transition:var(--ease);
+}
+.cc-card:hover{background:rgba(255,255,255,0.09);transform:translateY(-6px);border-color:rgba(255,255,255,0.18);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+.cc-icon{font-size:30px;margin-bottom:12px;}
+.cc-label{font-size:10px;color:rgba(255,255,255,0.45);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;}
+.cc-val{font-size:13.5px;font-weight:700;margin-top:6px;}
+
+footer{
+  background:#060a12;color:rgba(255,255,255,0.35);
+  text-align:center;padding:28px 20px;font-size:12px;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:992px){
+  .expertise-grid,.sk-grid{grid-template-columns:repeat(2,1fr);}
+  .about-grid{grid-template-columns:1fr;}
+  .qual-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero{padding:110px 16px 70px;}
+  .hero h1{font-size:30px;letter-spacing:-0.8px;}
+  .hero-sub{font-size:14px;}
+  .avatar-ring{width:110px;height:110px;}
+  .avatar-inner{font-size:30px;}
+  section{padding:64px 16px;}
+  .expertise-grid,.sk-grid,.qual-grid,.ref-grid,.lang-grid{grid-template-columns:1fr!important;gap:16px;}
+  .tl-wrap::before{left:20px;}
+  .tl-dot{width:42px;height:42px;font-size:18px;}
+  .tl-item{gap:18px;}
+  .tl-body{padding:20px;}
+  .tl-role{font-size:15px;}
+  .sec-title{font-size:26px;}
+  .cc-grid{flex-direction:column;align-items:center;}
+  .cc-card{width:100%;max-width:340px;}
+  .stat-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:420px){
+  .hero h1{font-size:24px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .pill-row .pill{font-size:11px;padding:6px 12px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Amir <span>Motalebi</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#qualifications">Education</a></li>
+    <li><a href="#references">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hbg" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mob">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#expertise" onclick="closeMob()">Expertise</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#skills" onclick="closeMob()">Skills</a>
+  <a href="#qualifications" onclick="closeMob()">Education</a>
+  <a href="#references" onclick="closeMob()">Testimonials</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        <img src="Amir.jpg" alt="Amir" onerror="this.style.display='none'">
+        
+      </div>
+    </div>
+    <h1>Seyed <span>Amir</span> Motalebi</h1>
+    <div class="hero-sub">Farsi / English Interpreter &amp; Translator &nbsp;·&nbsp; Community Support Professional &nbsp;·&nbsp; IT Specialist</div>
+    <div class="pill-row">
+      <span class="pill amber">🗣️ Native Farsi Speaker</span>
+      <span class="pill">✅ Right to Work in UK</span>
+      <span class="pill">📜 City &amp; Guilds Level 1 English</span>
+      <span class="pill">🤝 Community Volunteer</span>
+      <span class="pill amber">💻 15+ Years IT Experience</span>
+    </div>
+    <div class="cta-row">
+      <a class="cta-btn primary" href="#contact">📞 Get in Touch</a>
+      <a class="cta-btn" href="#references">📋 View References</a>
+      <span class="cta-btn">📍  UK</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Who I Am</div>
+      <div class="sec-title">Professional Profile</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a bilingual Farsi/English professional based in Telford, Shropshire, with over 15 years of IT experience and a deep background in community support, interpretation, and volunteer leadership.</p>
+        <p>Since arriving in the UK in 2020, I have embedded myself in British society through church service, refugee support, and continuous learning — earning a Functional Skills Level 1 English qualification (City &amp; Guilds, Ofqual regulated) in April 2026.</p>
+        <p>My character is vouched for by church trustees, a retired Local Authority Homeless Service Manager, an MBE-endorsed community director, and experienced senior pastors — all of whom have written detailed professional references on my behalf.</p>
+        <div class="quote-block">
+          "Whatever Amir sets his mind to and commits to, he pursues courses of action to achieve an end result, encouraging others along the way. His insights, experience and commitment cannot be underestimated."
+          <br><strong style="display:block;margin-top:10px;color:#1e40af;">— Chris Ashley, Retired Homeless Service Manager &amp; Refugee Support Coordinator</strong>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-n">15+</div><div class="stat-l">Years IT Experience</div></div>
+        <div class="stat-card"><div class="stat-n">4+</div><div class="stat-l">Years UK Community Service</div></div>
+        <div class="stat-card"><div class="stat-n">8</div><div class="stat-l">Professional References</div></div>
+        <div class="stat-card"><div class="stat-n">4</div><div class="stat-l">UK Certifications</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="expertise-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Core Expertise</div>
+      <div class="sec-title">Farsi / English Interpretation &amp; Translation</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="expertise-grid">
+      <div class="exp-card">
+        <div class="exp-card-icon">🗣️</div>
+        <div class="exp-card-title">Community Interpreting</div>
+        <div class="exp-card-desc">Providing accurate live Farsi/English interpretation for church services, community meetings, housing appointments, and integration events.</div>
+        <span class="exp-badge">Native Farsi</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">📋</div>
+        <div class="exp-card-title">Document &amp; Form Assistance</div>
+        <div class="exp-card-desc">Helping individuals complete complex official UK forms — asylum applications, health referrals, housing, and educational applications.</div>
+        <span class="exp-badge">Farsi &amp; English</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">✝️</div>
+        <div class="exp-card-title">Pastoral &amp; Spiritual Interpreting</div>
+        <div class="exp-card-desc">Translating Alpha Course sessions and church teachings for Iranian and Dari-speaking attendees. Trusted by senior pastors and church trustees.</div>
+        <span class="exp-badge">Alpha Certified</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">🏥</div>
+        <div class="exp-card-title">Healthcare &amp; Social Services</div>
+        <div class="exp-card-desc">Interpreting at medical and social care appointments with sensitivity for vulnerable people facing trauma, language barriers, and cultural differences.</div>
+        <span class="exp-badge">Community Focused</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">🌐</div>
+        <div class="exp-card-title">Digital &amp; Written Translation</div>
+        <div class="exp-card-desc">Supporting refugee outreach websites and digital resource materials with accurate bilingual written translations and website content.</div>
+        <span class="exp-badge">IT Skilled</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-icon">🤝</div>
+        <div class="exp-card-title">Cultural Liaison</div>
+        <div class="exp-card-desc">Bridging the gap between UK public services and Iranian/Afghan communities — communicating cultural context beyond literal language.</div>
+        <span class="exp-badge">Cross-Cultural</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+<section id="experience" class="timeline-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">My Journey</div>
+      <div class="sec-title">Voluntary &amp; Professional Experience</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="tl-wrap">
+
+      <div class="tl-item">
+        <div class="tl-dot amber-dot">🕊️</div>
+        <div class="tl-body">
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">Farsi Interpreter, FoodShare Volunteer &amp; Alpha Team Member</div>
+              <div class="tl-org">Madeley Baptist Church, Telford</div>
+            </div>
+            <span class="tl-date">Jan 2025 – Present</span>
+          </div>
+          <ul class="tl-list">
+            <li>Provide weekly Farsi/English interpretation during church services for Persian-speaking congregation members</li>
+            <li>Volunteer every Saturday with Community FoodHub/FoodShare — organising, sorting and distributing food with dignity</li>
+            <li>Translate Alpha Course teaching sessions for Iranian non-English speakers — confirmed by course leader Mrs Meena Ledger as "a great asset"</li>
+            <li>Build positive, empathetic relationships with church community and vulnerable members of the public</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">🤝</div>
+        <div class="tl-body">
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">Refugee Support Volunteer &amp; Interpreter</div>
+              <div class="tl-org">Telford Together with Refugees / Shropshire Supports Refugees</div>
+            </div>
+            <span class="tl-date">2023 – Present</span>
+          </div>
+          <ul class="tl-list">
+            <li>Assist at weekly English Class for asylum seekers every Tuesday at Brookside Community Centre, Telford</li>
+            <li>Provide Farsi/English interpretation and practical support for asylum seekers in shared accommodation</li>
+            <li>Help individuals navigate health, educational, housing and asylum applications — confirmed by Chris Ashley as delivering "dedicated support"</li>
+            <li>Contribute to refugee support digital resources and website content in both languages</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">💛</div>
+        <div class="tl-body">
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">Community Support Volunteer</div>
+              <div class="tl-org">Friendly Faces Programme &amp; Godiva Trust, Coventry</div>
+            </div>
+            <span class="tl-date">2021 – 2025</span>
+          </div>
+          <ul class="tl-list">
+            <li>Provided pastoral care and practical assistance to traumatised asylum seekers in temporary accommodation</li>
+            <li>Delivered Farsi/English translation and interpretation in community settings</li>
+            <li>Recognised by MBE-endorsed director Pru Porreta for "thoughtful, respectful, quiet determination"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot amber-dot">💻</div>
+        <div class="tl-body">
+          <div class="tl-top">
+            <div>
+              <div class="tl-role">Senior IT Professional &amp; Computer Operator</div>
+              <div class="tl-org">Various Organisations – Iran</div>
+            </div>
+            <span class="tl-date">2005 – 2020</span>
+          </div>
+          <ul class="tl-list">
+            <li>Operated, configured, and maintained computer systems and enterprise networks for 15+ years</li>
+            <li>Diagnosed and resolved hardware/software faults promptly; managed system backups and data security</li>
+            <li>Proficient in Microsoft Office (advanced), Google Docs, graphic design, and basic web development</li>
+            <li>Supported responsive web development projects and prepared detailed technical documentation</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Capabilities</div>
+      <div class="sec-title">Skills &amp; Competencies</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-card">
+        <div class="sk-icon">🗣️</div>
+        <div class="sk-title">Interpretation</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Native Farsi</span>
+          <span class="sk-tag">Level 1 English</span>
+          <span class="sk-tag">Pastoral</span>
+          <span class="sk-tag">Live Verbal</span>
+          <span class="sk-tag">Written</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">🤝</div>
+        <div class="sk-title">Community Support</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Refugee Support</span>
+          <span class="sk-tag">Form Assistance</span>
+          <span class="sk-tag">Food Distribution</span>
+          <span class="sk-tag">Outreach</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">💻</div>
+        <div class="sk-title">IT &amp; Systems</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Network Setup</span>
+          <span class="sk-tag">IT Support</span>
+          <span class="sk-tag">MS Office</span>
+          <span class="sk-tag">Data Entry</span>
+          <span class="sk-tag">Web (HTML/CSS)</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">🎽</div>
+        <div class="sk-title">Coaching</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Sport England Cert.</span>
+          <span class="sk-tag">Inclusion Programs</span>
+          <span class="sk-tag">Group Leadership</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">🌍</div>
+        <div class="sk-title">Cultural Communication</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Iranian Culture</span>
+          <span class="sk-tag">Cross-Cultural</span>
+          <span class="sk-tag">High Empathy</span>
+          <span class="sk-tag">Afghan Community</span>
+        </div>
+      </div>
+      <div class="sk-card">
+        <div class="sk-icon">📋</div>
+        <div class="sk-title">Administration</div>
+        <div class="sk-tags">
+          <span class="sk-tag">Documentation</span>
+          <span class="sk-tag">Graphic Design</span>
+          <span class="sk-tag">Research</span>
+          <span class="sk-tag">Report Writing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFICATIONS -->
+<section id="qualifications" class="qual-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Education</div>
+      <div class="sec-title">Qualifications &amp; Certifications</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="qual-grid">
+      <div class="q-card featured">
+        <span class="q-badge ofqual">Ofqual Regulated</span>
+        <div class="q-name">Functional Skills Qualification in English – Level 1</div>
+        <div class="q-org">City &amp; Guilds | Telford College</div>
+        <div class="q-sub">Speaking, Listening, Reading &amp; Writing — All Passed | Reg No: 603/4646/2</div>
+        <div class="q-year">📅 Awarded April 2026</div>
+      </div>
+      <div class="q-card">
+        <span class="q-badge sport">Sport England</span>
+        <div class="q-name">Community Sports Inclusion Certificate</div>
+        <div class="q-org">Allsports Coaches Coaching Academy CIC</div>
+        <div class="q-sub">Government-funded community sports inclusion coaching program</div>
+        <div class="q-year">📅 Awarded February 2025</div>
+      </div>
+      <div class="q-card featured">
+        <span class="q-badge ofqual">Ofqual Regulated</span>
+        <div class="q-name">Functional English – Entry Level 3</div>
+        <div class="q-org">City &amp; Guilds | Telford College</div>
+        <div class="q-sub">Nationally recognised UK English language qualification — 100% attendance</div>
+        <div class="q-year">📅 2024 – 2025</div>
+      </div>
+      <div class="q-card">
+        <span class="q-badge christian">Christian Education</span>
+        <div class="q-name">Alpha Course – Certificate of Completion</div>
+        <div class="q-org">Madeley Baptist Church, Telford</div>
+        <div class="q-sub">International Christian foundations course — completed during homelessness period</div>
+        <div class="q-year">📅 Completed 2024</div>
+      </div>
+      <div class="q-card">
+        <span class="q-badge degree">Higher Education</span>
+        <div class="q-name">Bachelor's Degree in Software Engineering</div>
+        <div class="q-org">Obtained in Iran (certificate unavailable — confiscated in country of origin)</div>
+        <div class="q-sub">15+ years of professional IT experience validates this qualification</div>
+        <div class="q-year">📅 Completed Pre-2020</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="references" class="ref-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Testimonials</div>
+      <div class="sec-title">Professional Endorsements</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="ref-grid">
+      <!-- Meena Ledger -->
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <div class="ref-quote">"He is an honest, dependable and kind person, and we are privileged that he is part of the team. Amir has been translating in Farsi for the non-English speakers at our Alpha Course and has been a great asset to me. He demonstrates his sincere Christian beliefs through his interactions with others and by providing practical assistance."</div>
+        <div class="ref-footer">
+          <div class="ref-av">ML</div>
+          <div>
+            <div class="ref-name">Mrs Meena Ledger</div>
+            <div class="ref-role">Church Trustee &amp; FoodShare Manager</div>
+            <div class="ref-org">Madeley Baptist Church, Telford</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chris Ashley -->
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <div class="ref-quote">"Whatever Amir sets his mind to and commits to, he pursues courses of action to achieve an end result, encouraging others along the way. A considerable number of asylum seekers were helped by him completing forms and applications, dealing with health, educational, and asylum matters. His insights, experience and personal knowledge and commitment cannot be underestimated."</div>
+        <div class="ref-footer">
+          <div class="ref-av">CA</div>
+          <div>
+            <div class="ref-name">Chris Ashley</div>
+            <div class="ref-role">Retired Local Authority Officer &amp; Homeless Service Manager</div>
+            <div class="ref-org">Telford Together with Refugees</div>
+          </div>
+        </div>
+      </div>
+          <!-- Pru Porreta MBE -->
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <div class="ref-quote">"Amir shows thoughtful, respectful, quiet determination in everything he does. He has contributed meaningfully to our community and charitable work, demonstrating genuine character, commitment and dedication to those around him. It is a pleasure to recommend him wholeheartedly."</div>
+        <div class="ref-footer">
+          <div class="ref-av">PP</div>
+          <div>
+            <div class="ref-name">Pru Porreta MBE</div>
+            <div class="ref-role">Director (MBE-endorsed)</div>
+            <div class="ref-org">Godiva Trust, Coventry</div>
+          </div>
+        </div>
+      </div>
+      <!-- Steve Moseley -->
+      <div class="ref-card featured-ref">
+        <div class="ref-stars">★★★★★</div>
+        <div class="ref-quote">"   His Farsi interpretation has been invaluable to our Persian-speaking congregation."</div>
+        <div class="ref-footer">
+          <div class="ref-av">SM</div>
+          <div>
+            <div class="ref-name">Pastor Steve Moseley</div>
+            <div class="ref-role">Senior Pastor — 32 Years Pastoral Experience</div>
+            <div class="ref-org">Well of Life Christian Fellowship</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- David Naylor -->
+      <div class="ref-card featured-ref">
+        <div class="ref-stars">★★★★★</div>
+        <div class="ref-quote">" He is one of the most sincere new believers I have encountered in 30 years of ministry. His Farsi translation work has been invaluable to our Persian-speaking congregation members and his character is outstanding."</div>
+        <div class="ref-footer">
+          <div class="ref-av">DN</div>
+          <div>
+            <div class="ref-name">Pastor David Naylor</div>
+            <div class="ref-role">Ministry Leader — 30 Years Experience</div>
+            <div class="ref-org">Well of Life Christian Fellowship</div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Rev. Simon Hollis -->
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <div class="ref-quote">"Amir  has been a vital member of the church, assisting other Farsi/Dari speakers who have found their way to us. He has felt warmly welcomed, made great connections with others, and gained great spiritual support. He is immensely involved in the activities of the church."</div>
+        <div class="ref-footer">
+          <div class="ref-av">SH</div>
+          <div>
+            <div class="ref-name">Reverend Simon Hollis</div>
+            <div class="ref-role">Minister</div>
+            <div class="ref-org">Madeley Baptist Church, Telford</div>
+          </div>
+        </div>
+      </div>
+
+  
+
+      <!-- Rev Dr Julie Gittoes -->
+      <div class="ref-card">
+        <div class="ref-stars">★★★★★</div>
+        <div class="ref-quote">"Amir sought spiritual comfort through private prayer during a period of great isolation and hardship, demonstrating sincere faith from the very beginning of his time in the UK. His spiritual journey has deepened his faith as a Christian, and his commitment to God and community is authentic and admirable."</div>
+        <div class="ref-footer">
+          <div class="ref-av">JG</div>
+          <div>
+            <div class="ref-name">The Revd Dr Julie Gittoes</div>
+            <div class="ref-role">Vicar — Doctor of Divinity</div>
+            <div class="ref-org">St Mary &amp; Christ Church, Hendon, London</div>
+          </div>
+        </div>
+      </div>
+
+     
+
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages" class="lang-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Communication</div>
+      <div class="sec-title">Languages</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="lang-flag">🇮🇷</div>
+        <div class="lang-name">Farsi (Persian)</div>
+        <div class="lang-lev">Native Language — Full Professional Fluency</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-flag">🇬🇧</div>
+        <div class="lang-name">English</div>
+        <div class="lang-lev">Functional Skills Level 1 — City &amp; Guilds (Ofqual Regulated) — April 2026</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:68%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Get In Touch</div>
+      <div class="sec-title">Contact Me</div>
+      <div class="sec-line"></div>
+    </div>
+    <p class="contact-sub">Available for interpretation, translation, community support roles, and IT positions across the UK. Right to Work confirmed.</p>
+    <div class="cc-grid">
+      <a class="cc-card" href="tel:+447565753009">
+        <div class="cc-icon">📞</div>
+        <div class="cc-label">Phone</div>
+        <div class="cc-val">+44 7565 753009</div>
+      </a>
+      <a class="cc-card" href="mailto:Seyedamirmotalebi2020@gmail.com">
+        <div class="cc-icon">✉️</div>
+        <div class="cc-label">Email</div>
+        <div class="cc-val">Seyedamirmotalebi2020@gmail.com</div>
+      </a>
+      <div class="cc-card">
+        <div class="cc-icon">📍</div>
+        <div class="cc-label">Location</div>
+        <div class="cc-val"> UK</div>
+      </div>
+      <div class="cc-card">
+        <div class="cc-icon">✅</div>
+        <div class="cc-label">Work Status</div>
+        <div class="cc-val">Right to Work in UK</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Seyed Amir Motalebi 
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mob').classList.toggle('open');}
+function closeMob(){document.getElementById('mob').classList.remove('open');}
+document.addEventListener('click',function(e){
+  const m=document.getElementById('mob'),h=document.getElementById('hbg');
+  if(!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open');
+});
+</script>
+</body>
+</html>
