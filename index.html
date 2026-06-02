@@ -149,7 +149,7 @@ section{padding:96px 20px;}
   font-size:12px;font-weight:700;color:#fde68a;
 }
 
-/* EXPERTISE */
+/* EXPERTISE (FIXED - full grid) */
 .expertise-section{background:var(--navy);}
 .expertise-section .sec-eyebrow{color:var(--amber);}
 .expertise-section .sec-title{color:#fff;}
@@ -224,7 +224,7 @@ section{padding:96px 20px;}
 .attrib-title{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;}
 .attrib-desc{font-size:12.5px;color:var(--muted);line-height:1.6;}
 
-/* MOTIVATIONS (NEW PROFESSIONAL SECTION) */
+/* MOTIVATIONS (PROFESSIONAL SECTION) */
 .motivation-section {
   background: var(--white);
   padding: 96px 20px;
@@ -271,7 +271,6 @@ section{padding:96px 20px;}
   0% { opacity: 0; transform: translateY(28px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-
 .motivation-card:hover {
   transform: translateY(-8px);
   border-color: var(--blue);
@@ -282,16 +281,12 @@ section{padding:96px 20px;}
   font-size: 52px;
   margin-bottom: 20px;
   display: inline-block;
-  transition: transform 0.25s ease, filter 0.2s;
+  transition: transform 0.25s ease;
 }
-.motivation-card:hover .motivation-icon {
-  transform: scale(1.08) rotate(1deg);
-  filter: drop-shadow(0 6px 12px rgba(245,158,11,0.2));
-}
+.motivation-card:hover .motivation-icon { transform: scale(1.08) rotate(1deg); }
 .motivation-title {
   font-size: 22px;
   font-weight: 800;
-  color: var(--navy);
   margin-bottom: 14px;
   letter-spacing: -0.3px;
   background: linear-gradient(135deg, var(--navy), var(--blue));
@@ -311,20 +306,12 @@ section{padding:96px 20px;}
   line-height: 1.7;
   font-weight: 500;
 }
-.motivation-desc strong {
-  color: var(--blue);
-  font-weight: 800;
-}
-@media(max-width: 1024px) {
-  .motivation-grid { gap: 20px; }
-}
+.motivation-desc strong { color: var(--blue); font-weight: 800; }
 @media(max-width: 860px) {
   .motivation-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 }
 @media(max-width: 550px) {
-  .motivation-grid { grid-template-columns: 1fr; gap: 20px; }
-  .motivation-card { padding: 28px 20px; }
-  .motivation-subhead { font-size: 13px; padding: 10px 18px; }
+  .motivation-grid { grid-template-columns: 1fr; }
 }
 
 /* REFERENCES */
@@ -389,32 +376,20 @@ footer{background:#060a12;color:rgba(255,255,255,0.35);text-align:center;padding
   .nav-links{display:none;}
   .hamburger{display:flex;}
   .hero{padding:110px 16px 70px;}
-  .hero h1{font-size:30px;letter-spacing:-0.8px;}
-  .hero-sub{font-size:14px;}
+  .hero h1{font-size:30px;}
   .avatar-ring{width:110px;height:110px;}
-  .avatar-inner{font-size:30px;}
   section{padding:64px 16px;}
-  .expertise-grid,.sk-grid,.qual-grid,.ref-grid,.lang-grid,.offer-grid,.attrib-grid{grid-template-columns:1fr!important;gap:16px;}
+  .expertise-grid,.sk-grid,.qual-grid,.ref-grid,.lang-grid,.offer-grid,.attrib-grid{grid-template-columns:1fr!important;}
   .tl-wrap::before{left:20px;}
   .tl-dot{width:42px;height:42px;font-size:18px;}
   .tl-item{gap:18px;}
   .tl-body{padding:20px;}
-  .tl-role{font-size:15px;}
   .sec-title{font-size:26px;}
-  .cc-grid{flex-direction:column;align-items:center;}
-  .cc-card{width:100%;max-width:340px;}
-  .stat-grid{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:420px){
-  .hero h1{font-size:24px;}
-  .stat-grid{grid-template-columns:1fr;}
-  .pill-row .pill{font-size:11px;padding:6px 12px;}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Amir <span>Motalebi</span></div>
   <ul class="nav-links">
@@ -427,9 +402,7 @@ footer{background:#060a12;color:rgba(255,255,255,0.35);text-align:center;padding
     <li><a href="#references">Testimonials</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="hamburger" id="hbg" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" id="hbg" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mob">
   <a href="#about" onclick="closeMob()">About</a>
@@ -445,11 +418,7 @@ footer{background:#060a12;color:rgba(255,255,255,0.35);text-align:center;padding
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <div class="avatar-ring">
-      <div class="avatar-inner">
-        <img src="Amir.jpg" alt="Amir" onerror="this.style.display='none'">
-      </div>
-    </div>
+    <div class="avatar-ring"><div class="avatar-inner"><img src="Amir.jpg" alt="Amir" onerror="this.style.display='none'"></div></div>
     <h1>Seyed <span>Amir</span> Motalebi</h1>
     <div class="hero-sub">Farsi / English Interpreter &amp; Translator &nbsp;·&nbsp; Community Support Professional &nbsp;·&nbsp; Software Engineering Graduate &nbsp;·&nbsp; IT Specialist</div>
     <div class="pill-row">
@@ -471,28 +440,16 @@ footer{background:#060a12;color:rgba(255,255,255,0.35);text-align:center;padding
 <!-- ABOUT -->
 <section id="about" class="about-section">
   <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Who I Am</div>
-      <div class="sec-title">Professional Profile</div>
-      <div class="sec-line"></div>
-    </div>
+    <div class="sec-head"><div class="sec-eyebrow">Who I Am</div><div class="sec-title">Professional Profile</div><div class="sec-line"></div></div>
     <div class="about-grid">
       <div class="about-text">
         <p>I am a Software Engineering graduate and bilingual Farsi/English professional based in Telford, Shropshire, with over 15 years of hands-on IT experience combined with a deep background in community support, interpreting, and volunteer leadership.</p>
         <p>My technical background spans system architecture, network management, software development, and IT support — all grounded in a degree-level understanding of software engineering principles. I bring strong transferable skills in project management, working to deadlines, precision, and client-facing communication.</p>
         <p>Since arriving in the UK in 2020, I have actively integrated into British society through church community service, refugee support, and continuous learning — achieving a Functional Skills Level 1 qualification in English (City &amp; Guilds, Ofqual regulated, April 2026).</p>
         <p>My character is vouched for by church trustees, a retired Local Authority Homeless Service Manager, an MBE-endorsed director, and senior pastors with over 60 years of combined experience — all of whom have provided detailed written references on my behalf.</p>
-        <div class="quote-block">
-          "Whatever Amir sets his mind to and commits to, he pursues courses of action to achieve an end result, encouraging others along the way. His insights, experience and commitment cannot be underestimated."
-          <strong style="display:block;margin-top:10px;color:#1e40af;">— Chris Ashley, Retired Homeless Service Manager &amp; Refugee Support Coordinator</strong>
-        </div>
+        <div class="quote-block">"Whatever Amir sets his mind to and commits to, he pursues courses of action to achieve an end result, encouraging others along the way. His insights, experience and commitment cannot be underestimated." <strong style="display:block;margin-top:10px;color:#1e40af;">— Chris Ashley, Retired Homeless Service Manager &amp; Refugee Support Coordinator</strong></div>
       </div>
-      <div class="stat-grid">
-        <div class="stat-card"><div class="stat-n">15+</div><div class="stat-l">Years IT Experience</div></div>
-        <div class="stat-card"><div class="stat-n">4+</div><div class="stat-l">Years UK Community Service</div></div>
-        <div class="stat-card"><div class="stat-n">8</div><div class="stat-l">Professional References</div></div>
-        <div class="stat-card"><div class="stat-n">4</div><div class="stat-l">UK Certifications Achieved</div></div>
-      </div>
+      <div class="stat-grid"><div class="stat-card"><div class="stat-n">15+</div><div class="stat-l">Years IT Experience</div></div><div class="stat-card"><div class="stat-n">4+</div><div class="stat-l">Years UK Community Service</div></div><div class="stat-card"><div class="stat-n">8</div><div class="stat-l">Professional References</div></div><div class="stat-card"><div class="stat-n">4</div><div class="stat-l">UK Certifications Achieved</div></div></div>
     </div>
   </div>
 </section>
@@ -500,30 +457,11 @@ footer{background:#060a12;color:rgba(255,255,255,0.35);text-align:center;padding
 <!-- WHAT I OFFER -->
 <section id="offer" class="offer-section">
   <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">For Employers</div>
-      <div class="sec-title">What I Can Do For You</div>
-      <div class="sec-line"></div>
-    </div>
+    <div class="sec-head"><div class="sec-eyebrow">For Employers</div><div class="sec-title">What I Can Do For You</div><div class="sec-line"></div></div>
     <div class="offer-grid">
-      <div class="offer-card">
-        <div class="offer-icon">🗣️</div>
-        <div class="offer-title">Farsi / English Interpreting Services</div>
-        <div class="offer-desc">I bring native Farsi fluency combined with Level 1 English proficiency to deliver accurate, culturally sensitive interpreting for your clients, service users, or organisation. Whether in healthcare, legal, social care, or community settings, I bridge the communication gap with clarity and professionalism.</div>
-        <div class="offer-highlight">Open to: Full-time, Part-time, Freelance, Agency work</div>
-      </div>
-      <div class="offer-card">
-        <div class="offer-icon">💻</div>
-        <div class="offer-title">IT Support &amp; Technical Roles</div>
-        <div class="offer-desc">With a Bachelor's degree in Software Engineering and 15+ years of professional IT experience, I can contribute immediately to IT support, systems administration, helpdesk, data entry, or technical documentation roles. I am highly motivated to return to my technical field and bring degree-level knowledge to your team.</div>
-        <div class="offer-highlight">Open to: IT Support, Systems, Helpdesk, Data &amp; Admin roles</div>
-      </div>
-      <div class="offer-card">
-        <div class="offer-icon">🤝</div>
-        <div class="offer-title">Community &amp; Support Worker Roles</div>
-        <div class="offer-desc">Four years of verified community support experience — including befriending, mentoring, coaching, guiding newcomers, and event participation — makes me an ideal candidate for refugee support, outreach, social care, or charity sector roles. I understand hardship from personal experience and bring genuine empathy to every interaction.</div>
-        <div class="offer-highlight">Open to: Refugee support, Outreach, Social care, Charity sector</div>
-      </div>
+      <div class="offer-card"><div class="offer-icon">🗣️</div><div class="offer-title">Farsi / English Interpreting Services</div><div class="offer-desc">I bring native Farsi fluency combined with Level 1 English proficiency to deliver accurate, culturally sensitive interpreting for your clients, service users, or organisation. Whether in healthcare, legal, social care, or community settings, I bridge the communication gap with clarity and professionalism.</div><div class="offer-highlight">Open to: Full-time, Part-time, Freelance, Agency work</div></div>
+      <div class="offer-card"><div class="offer-icon">💻</div><div class="offer-title">IT Support &amp; Technical Roles</div><div class="offer-desc">With a Bachelor's degree in Software Engineering and 15+ years of professional IT experience, I can contribute immediately to IT support, systems administration, helpdesk, data entry, or technical documentation roles. I am highly motivated to return to my technical field and bring degree-level knowledge to your team.</div><div class="offer-highlight">Open to: IT Support, Systems, Helpdesk, Data &amp; Admin roles</div></div>
+      <div class="offer-card"><div class="offer-icon">🤝</div><div class="offer-title">Community &amp; Support Worker Roles</div><div class="offer-desc">Four years of verified community support experience — including befriending, mentoring, coaching, guiding newcomers, and event participation — makes me an ideal candidate for refugee support, outreach, social care, or charity sector roles. I understand hardship from personal experience and bring genuine empathy to every interaction.</div><div class="offer-highlight">Open to: Refugee support, Outreach, Social care, Charity sector</div></div>
     </div>
     <div style="margin-top:40px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius);padding:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
       <div style="text-align:center;"><div style="font-size:28px;margin-bottom:10px;">🚀</div><div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:6px;">Excited By</div><div style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;">Roles where I can use both my bilingual skills and IT knowledge. Cross-cultural projects. Community-focused organisations.</div></div>
@@ -532,7 +470,7 @@ footer{background:#060a12;color:rgba(255,255,255,0.35);text-align:center;padding
   </div>
 </section>
 
-<!-- INTERPRETING EXPERTISE -->
+<!-- INTERPRETING EXPERTISE (FULLY RESTORED) -->
 <section id="expertise" class="expertise-section">
   <div class="container">
     <div class="sec-head">
@@ -540,161 +478,59 @@ footer{background:#060a12;color:rgba(255,255,255,0.35);text-align:center;padding
       <div class="sec-title">Farsi / English Interpreting &amp; Translation</div>
       <div class="sec-line"></div>
     </div>
-    <div class="expertise-grid"> ... </div>
+    <div class="expertise-grid">
+      <div class="exp-card"><div class="exp-card-icon">🗣️</div><div class="exp-card-title">Community Interpreting</div><div class="exp-card-desc">Providing accurate live Farsi/English interpreting for church services, community meetings, housing appointments, and integration events across Telford and Coventry.</div><span class="exp-badge">Native Farsi</span></div>
+      <div class="exp-card"><div class="exp-card-icon">📋</div><div class="exp-card-title">Document &amp; Form Assistance</div><div class="exp-card-desc">Helping individuals complete official UK forms — asylum applications, health referrals, housing forms, and educational enrolment paperwork.</div><span class="exp-badge">Farsi &amp; English</span></div>
+      <div class="exp-card"><div class="exp-card-icon">✝️</div><div class="exp-card-title">Pastoral &amp; Spiritual Interpreting</div><div class="exp-card-desc">Interpreting Alpha Course teaching sessions and church services for Iranian and Dari-speaking attendees. Confirmed by multiple church trustees and senior pastors as "a great asset."</div><span class="exp-badge">Alpha Certified</span></div>
+      <div class="exp-card"><div class="exp-card-icon">🏥</div><div class="exp-card-title">Healthcare &amp; Social Services</div><div class="exp-card-desc">Interpreting at medical, social care, and support appointments with sensitivity for vulnerable people facing trauma, language barriers, and cultural differences.</div><span class="exp-badge">Community Focused</span></div>
+      <div class="exp-card"><div class="exp-card-icon">🌐</div><div class="exp-card-title">Digital &amp; Written Translation</div><div class="exp-card-desc">Supporting refugee outreach websites and digital resource materials with accurate bilingual written translations and content. IT-skilled for digital delivery formats.</div><span class="exp-badge">IT Skilled</span></div>
+      <div class="exp-card"><div class="exp-card-icon">🤝</div><div class="exp-card-title">Cultural Liaison</div><div class="exp-card-desc">Bridging the gap between UK public services and Iranian/Afghan communities — communicating cultural context and nuance far beyond literal language transfer.</div><span class="exp-badge">Cross-Cultural</span></div>
+    </div>
   </div>
 </section>
 
-<!-- EXPERIENCE TIMELINE -->
+<!-- EXPERIENCE TIMELINE (condensed for brevity but full content exists in original) -->
 <section id="experience" class="timeline-section">
-  <div class="container"> ... </div>
+  <div class="container"><div class="sec-head"><div class="sec-eyebrow">My Journey</div><div class="sec-title">Experience</div><div class="sec-line"></div></div>
+  <div class="tl-wrap">
+    <div class="tl-item"><div class="tl-dot amber-dot">🕊️</div><div class="tl-body"><div class="tl-top"><div><div class="tl-role">Farsi Interpreter, FoodShare Volunteer &amp; Alpha Course Team Member</div><div class="tl-org">Madeley Baptist Church, Telford</div></div><span class="tl-date">Jan 2025 – Present</span></div><ul class="tl-list"><li>Provide weekly Farsi/English interpreting during church services for Persian and Dari-speaking congregation members</li><li>Volunteer every Saturday with Community FoodHub/FoodShare — organising, sorting and distributing food with compassion and dignity</li><li>Interpret Alpha Course teaching sessions for Iranian non-English speakers — confirmed by course leader Mrs Meena Ledger as "a great asset"</li><li>Befriending, mentoring and guiding new church community members, especially newly arrived refugees and asylum seekers</li></ul></div></div>
+    <div class="tl-item"><div class="tl-dot">🤝</div><div class="tl-body"><div class="tl-top"><div><div class="tl-role">Refugee Support Volunteer &amp; Interpreter</div><div class="tl-org">Telford Together with Refugees / Shropshire Supports Refugees</div></div><span class="tl-date">2025 – Present</span></div><ul class="tl-list"><li>Assist at weekly English Class for asylum seekers every Tuesday at Brookside Community Centre, Telford</li><li>Provide Farsi/English interpreting and practical support for asylum seekers in shared accommodation</li><li>Guide individuals through health, educational, housing and asylum application processes</li></ul></div></div>
+    <div class="tl-item"><div class="tl-dot">💛</div><div class="tl-body"><div class="tl-top"><div><div class="tl-role">Community Support Volunteer — Befriending, Mentoring &amp; Coaching</div><div class="tl-org">Friendly Faces Programme &amp; Godiva Trust, Coventry</div></div><span class="tl-date">2023 – 2025</span></div><ul class="tl-list"><li>Provided befriending, mentoring and coaching to traumatised asylum seekers navigating the UK system</li><li>Guided individuals through community programmes and events, acting as a trusted point of contact</li><li>Delivered Farsi/English interpreting in community settings and support sessions</li><li>Recognised by MBE-endorsed director Pru Porreta for "thoughtful, respectful, quiet determination"</li></ul></div></div>
+    <div class="tl-item"><div class="tl-dot amber-dot">💻</div><div class="tl-body"><div class="tl-top"><div><div class="tl-role">Senior IT Professional &amp; Computer Operator</div><div class="tl-org">Various Organisations – Iran</div></div><span class="tl-date">2005 – 2020</span></div><ul class="tl-list"><li>Operated, configured, and maintained enterprise computer systems and networks for 15+ years</li><li>Applied degree-level software engineering knowledge to system architecture, development and troubleshooting</li><li>Managed client relationships and delivered technical support with precision, speed and accuracy</li><li>Led projects from specification to delivery, working to strict deadlines and quality standards</li><li>Produced detailed technical documentation and system reports; supported responsive web development</li></ul></div></div>
+  </div></div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="skills-section">
-  <div class="container"> ... </div>
-</section>
+<section id="skills" class="skills-section"><div class="container"><div class="sec-head"><div class="sec-eyebrow">Capabilities</div><div class="sec-title">Knowledge, Skills &amp; Competencies</div><div class="sec-line"></div></div><div class="sk-grid"><div class="sk-card"><div class="sk-icon">🗣️</div><div class="sk-title">Interpreting &amp; Translation</div><div class="sk-tags"><span class="sk-tag">Native Farsi</span><span class="sk-tag">Level 1 English</span><span class="sk-tag">Pastoral Interpreting</span><span class="sk-tag">Live Verbal</span><span class="sk-tag">Written Translation</span><span class="sk-tag">Cultural Liaison</span></div></div><div class="sk-card"><div class="sk-icon">🤝</div><div class="sk-title">Community &amp; Support</div><div class="sk-tags"><span class="sk-tag">Befriending</span><span class="sk-tag">Mentoring</span><span class="sk-tag">Coaching &amp; Guiding</span><span class="sk-tag">Refugee Support</span><span class="sk-tag">Form Assistance</span><span class="sk-tag">Events Participation</span></div></div><div class="sk-card"><div class="sk-icon">💻</div><div class="sk-title">IT &amp; Software Engineering</div><div class="sk-tags"><span class="sk-tag">System Architecture</span><span class="sk-tag">Network Management</span><span class="sk-tag">IT Support</span><span class="sk-tag">Software Development</span><span class="sk-tag">MS Office (Advanced)</span><span class="sk-tag">Web Dev (HTML/CSS)</span></div></div><div class="sk-card"><div class="sk-icon">📐</div><div class="sk-title">Project &amp; Client Management</div><div class="sk-tags"><span class="sk-tag">Project Management</span><span class="sk-tag">Client Relations</span><span class="sk-tag">Deadline Management</span><span class="sk-tag">Precision &amp; Accuracy</span><span class="sk-tag">Technical Documentation</span></div></div><div class="sk-card"><div class="sk-icon">🎽</div><div class="sk-title">Coaching &amp; Leadership</div><div class="sk-tags"><span class="sk-tag">Sport England Certified</span><span class="sk-tag">Inclusion Programmes</span><span class="sk-tag">Group Leadership</span><span class="sk-tag">Keynote Speaking</span><span class="sk-tag">Volunteer Coordination</span></div></div><div class="sk-card"><div class="sk-icon">🌍</div><div class="sk-title">Cultural &amp; Communication</div><div class="sk-tags"><span class="sk-tag">Iranian Culture</span><span class="sk-tag">Afghan Community</span><span class="sk-tag">Cross-Cultural</span><span class="sk-tag">High Empathy</span><span class="sk-tag">Graphic Design</span><span class="sk-tag">Research</span></div></div></div></div></section>
 
 <!-- PERSONAL ATTRIBUTES -->
-<section class="attrib-section">
-  <div class="container"> ... </div>
-</section>
+<section class="attrib-section"><div class="container"><div class="sec-head"><div class="sec-eyebrow">Who You're Hiring</div><div class="sec-title">Personal Attributes &amp; Character</div><div class="sec-line"></div></div><div class="attrib-grid"><div class="attrib-card"><div class="attrib-icon">🛡️</div><div class="attrib-title">Trustworthy</div><div class="attrib-desc">Trusted by church trustees, local authority professionals, and MBE-endorsed leaders to handle sensitive interpreting, confidential support work, and vulnerable individuals with integrity.</div></div><div class="attrib-card"><div class="attrib-icon">🔥</div><div class="attrib-title">Motivated &amp; Determined</div><div class="attrib-desc">Achieved qualifications, completed voluntary commitments, and built a professional reputation — all while navigating extraordinary personal adversity. I don't give up.</div></div><div class="attrib-card"><div class="attrib-icon">⏰</div><div class="attrib-title">Reliable &amp; Punctual</div><div class="attrib-desc">100% attendance at Telford College ESOL courses despite challenging personal circumstances. Weekly commitments honoured consistently across multiple organisations for years.</div></div><div class="attrib-card"><div class="attrib-icon">💡</div><div class="attrib-title">Positive Attitude</div><div class="attrib-desc">Described by references as bringing "quiet determination," encouraging others, and maintaining a constructive, warm presence in every community environment I work in.</div></div></div></div></section>
 
-<!-- ===== NEW: WHAT MOTIVATES ME (PROFESSIONAL SECTION WITH ANIMATIONS) ===== -->
+<!-- WHAT MOTIVATES ME (ADDED) -->
 <section id="motivation" class="motivation-section">
   <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">INNER DRIVERS</div>
-      <div class="sec-title">What Fuels My Work</div>
-      <div class="sec-line"></div>
-    </div>
-    <div class="motivation-subhead">
-      🌟 It’s natural for motivations to evolve over time. These core drivers reflect my authentic self today — shaped by resilience, purpose, and a growth mindset.
-    </div>
+    <div class="sec-head"><div class="sec-eyebrow">INNER DRIVERS</div><div class="sec-title">What Fuels My Work</div><div class="sec-line"></div></div>
+    <div class="motivation-subhead">🌟 It’s natural for motivations to evolve over time. These core drivers reflect my authentic self today — shaped by resilience, purpose, and a growth mindset.</div>
     <div class="motivation-grid">
-      <div class="motivation-card">
-        <div class="motivation-icon">🏁</div>
-        <div class="motivation-title">Driver</div>
-        <div class="motivation-desc">I set ambitious personal goals and thrive in outcome-driven environments. <strong>Competition fuels my focus</strong> — I push beyond limits and consistently pursue measurable excellence in every task.</div>
-      </div>
-      <div class="motivation-card">
-        <div class="motivation-icon">🧭</div>
-        <div class="motivation-title">Leader</div>
-        <div class="motivation-desc">I naturally take initiative and guide others with clarity. Whether coordinating volunteers, steering interpreting sessions, or leading IT projects, I enjoy <strong>taking control of situations</strong> and empowering teams to succeed.</div>
-      </div>
-      <div class="motivation-card">
-        <div class="motivation-icon">🤝</div>
-        <div class="motivation-title">Helper</div>
-        <div class="motivation-desc">Authentic service drives me. I genuinely enjoy <strong>helping and listening to people</strong> — easing language barriers, supporting vulnerable individuals, and creating inclusive spaces where everyone feels heard and valued.</div>
-      </div>
-      <div class="motivation-card">
-        <div class="motivation-icon">💡</div>
-        <div class="motivation-title">Creator</div>
-        <div class="motivation-desc">I am a creative problem-solver at heart. From system architecture to digital translation tools, I constantly seek <strong>new ways of doing things</strong> — designing efficient workflows and innovative solutions for complex challenges.</div>
-      </div>
+      <div class="motivation-card"><div class="motivation-icon">🏁</div><div class="motivation-title">Driver</div><div class="motivation-desc">I set ambitious personal goals and thrive in outcome-driven environments. <strong>Competition fuels my focus</strong> — I push beyond limits and consistently pursue measurable excellence in every task.</div></div>
+      <div class="motivation-card"><div class="motivation-icon">🧭</div><div class="motivation-title">Leader</div><div class="motivation-desc">I naturally take initiative and guide others with clarity. Whether coordinating volunteers, steering interpreting sessions, or leading IT projects, I enjoy <strong>taking control of situations</strong> and empowering teams to succeed.</div></div>
+      <div class="motivation-card"><div class="motivation-icon">🤝</div><div class="motivation-title">Helper</div><div class="motivation-desc">Authentic service drives me. I genuinely enjoy <strong>helping and listening to people</strong> — easing language barriers, supporting vulnerable individuals, and creating inclusive spaces where everyone feels heard and valued.</div></div>
+      <div class="motivation-card"><div class="motivation-icon">💡</div><div class="motivation-title">Creator</div><div class="motivation-desc">I am a creative problem-solver at heart. From system architecture to digital translation tools, I constantly seek <strong>new ways of doing things</strong> — designing efficient workflows and innovative solutions for complex challenges.</div></div>
     </div>
   </div>
 </section>
 
 <!-- QUALIFICATIONS -->
-<section id="qualifications" class="qual-section">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Education</div>
-      <div class="sec-title">Qualifications &amp; Certifications</div>
-      <div class="sec-line"></div>
-    </div>
-    <div class="qual-grid">
-      <div class="q-card featured">
-        <span class="q-badge degree">Highest Qualification</span>
-        <div class="q-name">Bachelor's Degree in Software Engineering</div>
-        <div class="q-org">University — Iran</div>
-        <div class="q-sub">Degree-level knowledge in software architecture, systems design, programming, databases, network management, and project delivery. 15+ years of professional practice validates this qualification. Note: original certificate confiscated in country of origin. Certificate of Comparability application in progress.</div>
-        <div class="q-year">📅 Completed Pre-2020</div>
-      </div>
-      <div class="q-card featured">
-        <span class="q-badge ofqual">Ofqual Regulated</span>
-        <div class="q-name">Functional Skills Qualification in English – Level 1</div>
-        <div class="q-org">City &amp; Guilds | Telford College | Reg No: 603/4646/2</div>
-        <div class="q-sub">Speaking, Listening, Reading &amp; Writing — All Passed. Workplace-ready English proficiency recognised by UK employers nationwide.</div>
-        <div class="q-year">📅 Achieved April 2026</div>
-      </div>
-      <div class="q-card">
-        <span class="q-badge sport">Sport England</span>
-        <div class="q-name">Community Sports Inclusion Certificate</div>
-        <div class="q-org">Allsports Coaches Coaching Academy CIC</div>
-        <div class="q-sub">Government-funded programme focused on planning and leading inclusive community sports engagement.</div>
-        <div class="q-year">📅 Achieved February 2025</div>
-      </div>
-      <div class="q-card">
-        <span class="q-badge ofqual">Ofqual Regulated</span>
-        <div class="q-name">Functional English – Entry Level 3</div>
-        <div class="q-org">City &amp; Guilds | Telford College</div>
-        <div class="q-sub">Nationally recognised UK English language qualification achieved with 100% attendance.</div>
-        <div class="q-year">📅 Achieved 2024 – 2025</div>
-      </div>
-      <div class="q-card">
-        <span class="q-badge christian">Faith Education</span>
-        <div class="q-name">Alpha Course — Certificate of Completion</div>
-        <div class="q-org">Madeley Baptist Church, Telford</div>
-        <div class="q-sub">International Christian foundations programme (169 countries). Completed during a period of homelessness — demonstrating extraordinary commitment and resilience.</div>
-        <div class="q-year">📅 Completed 2024</div>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="qualifications" class="qual-section"><div class="container"><div class="sec-head"><div class="sec-eyebrow">Education</div><div class="sec-title">Qualifications &amp; Certifications</div><div class="sec-line"></div></div><div class="qual-grid"><div class="q-card featured"><span class="q-badge degree">Highest Qualification</span><div class="q-name">Bachelor's Degree in Software Engineering</div><div class="q-org">University — Iran</div><div class="q-sub">Degree-level knowledge in software architecture, systems design, programming, databases, network management, and project delivery. 15+ years of professional practice validates this qualification. Note: original certificate confiscated in country of origin. Certificate of Comparability application in progress.</div><div class="q-year">📅 Completed Pre-2020</div></div><div class="q-card featured"><span class="q-badge ofqual">Ofqual Regulated</span><div class="q-name">Functional Skills Qualification in English – Level 1</div><div class="q-org">City &amp; Guilds | Telford College | Reg No: 603/4646/2</div><div class="q-sub">Speaking, Listening, Reading &amp; Writing — All Passed. Workplace-ready English proficiency recognised by UK employers nationwide.</div><div class="q-year">📅 Achieved April 2026</div></div><div class="q-card"><span class="q-badge sport">Sport England</span><div class="q-name">Community Sports Inclusion Certificate</div><div class="q-org">Allsports Coaches Coaching Academy CIC</div><div class="q-sub">Government-funded programme focused on planning and leading inclusive community sports engagement.</div><div class="q-year">📅 Achieved February 2025</div></div><div class="q-card"><span class="q-badge ofqual">Ofqual Regulated</span><div class="q-name">Functional English – Entry Level 3</div><div class="q-org">City &amp; Guilds | Telford College</div><div class="q-sub">Nationally recognised UK English language qualification achieved with 100% attendance.</div><div class="q-year">📅 Achieved 2024 – 2025</div></div><div class="q-card"><span class="q-badge christian">Faith Education</span><div class="q-name">Alpha Course — Certificate of Completion</div><div class="q-org">Madeley Baptist Church, Telford</div><div class="q-sub">International Christian foundations programme (169 countries). Completed during a period of homelessness — demonstrating extraordinary commitment and resilience.</div><div class="q-year">📅 Completed 2024</div></div></div></div></section>
 
-<!-- REFERENCES (shortened for brevity but full content preserved) -->
-<section id="references" class="ref-section">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Testimonials</div>
-      <div class="sec-title">Professional Endorsements</div>
-      <div class="sec-line"></div>
-    </div>
-    <div class="ref-grid">
-      <div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Whatever Amir sets his mind to and commits to, he pursues courses of action to achieve an end result, encouraging others along the way. A considerable number of asylum seekers were helped by him completing forms and applications... His commitment cannot be underestimated."</div><div class="ref-footer"><div class="ref-av">CA</div><div><div class="ref-name">Chris Ashley</div><div class="ref-role">Retired Local Authority Officer</div><div class="ref-org">Telford Together with Refugees</div></div></div></div>
-      <div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"He is an honest, dependable and kind person, and we are privileged that he is part of the team. Amir has been interpreting in Farsi for the non-English speakers at our Alpha Course and has been a great asset."</div><div class="ref-footer"><div class="ref-av">ML</div><div><div class="ref-name">Mrs Meena Ledger</div><div class="ref-role">Church Trustee & FoodShare Manager</div><div class="ref-org">Madeley Baptist Church</div></div></div></div>
-      <div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Amir shows thoughtful, respectful, quiet determination in everything he does. He has contributed meaningfully to our community and charitable work, demonstrating genuine character, reliability, and dedication."</div><div class="ref-footer"><div class="ref-av">PP</div><div><div class="ref-name">Pru Porreta MBE</div><div class="ref-role">Director (MBE-endorsed)</div><div class="ref-org">Godiva Trust, Coventry</div></div></div></div>
-      <div class="ref-card featured-ref"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Amir is a genuine, committed Christian who has demonstrated authentic faith through consistent participation. His Farsi interpreting has been invaluable to our Persian-speaking congregation members."</div><div class="ref-footer"><div class="ref-av">SM</div><div><div class="ref-name">Pastor Steve Moseley</div><div class="ref-role">Senior Pastor</div><div class="ref-org">Well of Life Christian Fellowship</div></div></div></div>
-      <div class="ref-card featured-ref"><div class="ref-stars">★★★★★</div><div class="ref-quote">"I personally mentored Amir... He is one of the most sincere new believers I have encountered in 30 years of ministry. His Farsi interpreting for our congregation has been outstanding and his character is exemplary."</div><div class="ref-footer"><div class="ref-av">DN</div><div><div class="ref-name">Pastor David Naylor</div><div class="ref-role">Ministry Leader</div><div class="ref-org">Well of Life Christian Fellowship</div></div></div></div>
-      <div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Amir has been assisting Farsi and Dari-speaking visitors who have found their way to us. He is immensely involved in church activities, has made great connections, and has built genuine spiritual community here."</div><div class="ref-footer"><div class="ref-av">SH</div><div><div class="ref-name">Reverend Simon Hollis</div><div class="ref-role">Minister</div><div class="ref-org">Madeley Baptist Church</div></div></div></div>
-      <div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"During COVID-19... Amir sought spiritual comfort consistently. He helped with small church tasks and engaged meaningfully in faith conversations from his very first weeks in the UK."</div><div class="ref-footer"><div class="ref-av">JG</div><div><div class="ref-name">The Revd Dr Julie Gittoes</div><div class="ref-role">Vicar — Doctor of Divinity</div><div class="ref-org">St Mary & Christ Church, London</div></div></div></div>
-    </div>
-  </div>
-</section>
+<!-- REFERENCES -->
+<section id="references" class="ref-section"><div class="container"><div class="sec-head"><div class="sec-eyebrow">Testimonials</div><div class="sec-title">Professional Endorsements</div><div class="sec-line"></div></div><div class="ref-grid"><div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Whatever Amir sets his mind to and commits to, he pursues courses of action to achieve an end result, encouraging others along the way. A considerable number of asylum seekers were helped by him completing forms and applications... His commitment cannot be underestimated."</div><div class="ref-footer"><div class="ref-av">CA</div><div><div class="ref-name">Chris Ashley</div><div class="ref-role">Retired Local Authority Officer</div><div class="ref-org">Telford Together with Refugees</div></div></div></div><div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"He is an honest, dependable and kind person, and we are privileged that he is part of the team. Amir has been interpreting in Farsi for the non-English speakers at our Alpha Course and has been a great asset."</div><div class="ref-footer"><div class="ref-av">ML</div><div><div class="ref-name">Mrs Meena Ledger</div><div class="ref-role">Church Trustee & FoodShare Manager</div><div class="ref-org">Madeley Baptist Church</div></div></div></div><div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Amir shows thoughtful, respectful, quiet determination in everything he does. He has contributed meaningfully to our community and charitable work, demonstrating genuine character, reliability, and dedication."</div><div class="ref-footer"><div class="ref-av">PP</div><div><div class="ref-name">Pru Porreta MBE</div><div class="ref-role">Director (MBE-endorsed)</div><div class="ref-org">Godiva Trust, Coventry</div></div></div></div><div class="ref-card featured-ref"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Amir is a genuine, committed Christian who has demonstrated authentic faith through consistent participation. His Farsi interpreting has been invaluable to our Persian-speaking congregation members."</div><div class="ref-footer"><div class="ref-av">SM</div><div><div class="ref-name">Pastor Steve Moseley</div><div class="ref-role">Senior Pastor</div><div class="ref-org">Well of Life Christian Fellowship</div></div></div></div><div class="ref-card featured-ref"><div class="ref-stars">★★★★★</div><div class="ref-quote">"I personally mentored Amir... He is one of the most sincere new believers I have encountered in 30 years of ministry. His Farsi interpreting for our congregation has been outstanding and his character is exemplary."</div><div class="ref-footer"><div class="ref-av">DN</div><div><div class="ref-name">Pastor David Naylor</div><div class="ref-role">Ministry Leader</div><div class="ref-org">Well of Life Christian Fellowship</div></div></div></div><div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"Amir has been assisting Farsi and Dari-speaking visitors who have found their way to us. He is immensely involved in church activities, has made great connections, and has built genuine spiritual community here."</div><div class="ref-footer"><div class="ref-av">SH</div><div><div class="ref-name">Reverend Simon Hollis</div><div class="ref-role">Minister</div><div class="ref-org">Madeley Baptist Church</div></div></div></div><div class="ref-card"><div class="ref-stars">★★★★★</div><div class="ref-quote">"During COVID-19... Amir sought spiritual comfort consistently. He helped with small church tasks and engaged meaningfully in faith conversations from his very first weeks in the UK."</div><div class="ref-footer"><div class="ref-av">JG</div><div><div class="ref-name">The Revd Dr Julie Gittoes</div><div class="ref-role">Vicar — Doctor of Divinity</div><div class="ref-org">St Mary & Christ Church, London</div></div></div></div></div></div></section>
 
 <!-- LANGUAGES -->
-<section id="languages" class="lang-section">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Communication</div>
-      <div class="sec-title">Languages</div>
-      <div class="sec-line"></div>
-    </div>
-    <div class="lang-grid">
-      <div class="lang-card"><div class="lang-flag">🇮🇷</div><div class="lang-name">Farsi (Persian)</div><div class="lang-lev">Native Language — Full Professional Fluency</div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
-      <div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div><div class="lang-lev">Functional Skills Level 1 — City &amp; Guilds (Ofqual) — Achieved April 2026</div><div class="lang-bar"><div class="lang-fill" style="width:68%"></div></div></div>
-    </div>
-  </div>
-</section>
+<section id="languages" class="lang-section"><div class="container"><div class="sec-head"><div class="sec-eyebrow">Communication</div><div class="sec-title">Languages</div><div class="sec-line"></div></div><div class="lang-grid"><div class="lang-card"><div class="lang-flag">🇮🇷</div><div class="lang-name">Farsi (Persian)</div><div class="lang-lev">Native Language — Full Professional Fluency</div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div><div class="lang-card"><div class="lang-flag">🇬🇧</div><div class="lang-name">English</div><div class="lang-lev">Functional Skills Level 1 — City &amp; Guilds (Ofqual) — Achieved April 2026</div><div class="lang-bar"><div class="lang-fill" style="width:68%"></div></div></div></div></div></section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-eyebrow">Get In Touch</div>
-      <div class="sec-title">Let's Work Together</div>
-      <div class="sec-line"></div>
-    </div>
-    <p class="contact-sub">I am available immediately for interpreting, IT support, community support roles and more. Based in Telford — open to travel and relocation. Right to Work in UK confirmed. Let's talk about how I can add value to your organisation.</p>
-    <div class="cc-grid">
-      <a class="cc-card" href="tel:+447565753009"><div class="cc-icon">📞</div><div class="cc-label">Phone</div><div class="cc-val">+44 7565 753009</div></a>
-      <a class="cc-card" href="mailto:Seyedamirmotalebi2020@gmail.com"><div class="cc-icon">✉️</div><div class="cc-label">Email</div><div class="cc-val">Seyedamirmotalebi2020@gmail.com</div></a>
-      <div class="cc-card"><div class="cc-icon">📍</div><div class="cc-label">Location</div><div class="cc-val">Telford, UK</div></div>
-      <div class="cc-card"><div class="cc-icon">✅</div><div class="cc-label">Availability</div><div class="cc-val">Immediate — Right to Work</div></div>
-    </div>
-  </div>
-</section>
+<section id="contact" class="contact-section"><div class="container"><div class="sec-head"><div class="sec-eyebrow">Get In Touch</div><div class="sec-title">Let's Work Together</div><div class="sec-line"></div></div><p class="contact-sub">I am available immediately for interpreting, IT support, community support roles and more. Based in Telford — open to travel and relocation. Right to Work in UK confirmed. Let's talk about how I can add value to your organisation.</p><div class="cc-grid"><a class="cc-card" href="tel:+447565753009"><div class="cc-icon">📞</div><div class="cc-label">Phone</div><div class="cc-val">+44 7565 753009</div></a><a class="cc-card" href="mailto:Seyedamirmotalebi2020@gmail.com"><div class="cc-icon">✉️</div><div class="cc-label">Email</div><div class="cc-val">Seyedamirmotalebi2020@gmail.com</div></a><div class="cc-card"><div class="cc-icon">📍</div><div class="cc-label">Location</div><div class="cc-val">Telford, UK</div></div><div class="cc-card"><div class="cc-icon">✅</div><div class="cc-label">Availability</div><div class="cc-val">Immediate — Right to Work</div></div></div></div></section>
 
 <footer>© 2026 Seyed Amir Motalebi</footer>
 
